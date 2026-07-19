@@ -160,7 +160,7 @@ function PixelGirlCharacter({ sprite }: { sprite: GirlSprite }) {
 // ── Girl character using uploaded image (same as HeroScene) ─────────────────
 function MemoryGirlCharacter({ sprite, src }: { sprite: GirlSprite; src: string }) {
   return (
-    <div className="relative w-28 sm:w-40 md:w-[170px]" style={{ aspectRatio: '90/170' }}>
+    <div className="relative w-32 sm:w-40 md:w-[170px]" style={{ aspectRatio: '90/170' }}>
       <Image
         src={src}
         alt="2D anime girl character"
@@ -183,7 +183,7 @@ function MemoryGirlCharacter({ sprite, src }: { sprite: GirlSprite; src: string 
 // ── Boy character using uploaded image ───────────────────────────────────────
 function PixelBoyCharacter({ sprite, src }: { sprite: BoySprite; src: string }) {
   return (
-    <div className="relative w-28 sm:w-40 md:w-[170px]" style={{ aspectRatio: '80/152' }}>
+    <div className="relative w-32 sm:w-40 md:w-[170px]" style={{ aspectRatio: '80/152' }}>
       <Image
         src={src}
         alt="2D anime boy character"
@@ -361,15 +361,17 @@ function VNMemoryOverlay({ memory, allMemories, onClose, onNextMemory, boyCharSr
       </div>
 
       {/* ── Middle: characters + dialogue ── */}
-      <div className="flex-1 flex flex-col items-center justify-end pb-4 sm:pb-6 px-3 sm:px-4 relative" style={{ minHeight: 0 }}>
+      <div className="flex-1 flex flex-col items-center justify-end pb-8 sm:pb-10 px-3 sm:px-4 relative" style={{ minHeight: 0 }}>
         
         {/* Dialogue bubble (center) */}
         <div
-          className="w-full max-w-lg mb-6 sm:mb-8 relative z-20"
+          className="absolute left-1/2 -translate-x-1/2 w-[92%] sm:w-[80%] max-w-2xl"
           style={{
+            bottom: 'clamp(70px, 15vh, 90px)',
+            zIndex: 30,
             opacity: bubbleVisible && !done ? 1 : 0,
-            transform: bubbleVisible && !done ? 'translateY(0) scale(1)' : 'translateY(10px) scale(0.96)',
-            transition: 'opacity 0.22s ease, transform 0.22s ease',
+            transform: bubbleVisible && !done ? 'translate(-50%, 0) scale(1)' : 'translate(-50%, 12px) scale(0.96)',
+            transition: 'opacity 0.25s ease, transform 0.25s ease',
           }}
         >
           {/* Speaker label */}
@@ -388,9 +390,9 @@ function VNMemoryOverlay({ memory, allMemories, onClose, onNextMemory, boyCharSr
 
           {/* Bubble */}
           <div
-            className="relative rounded-xl sm:rounded-2xl px-3 py-2 sm:px-4 sm:py-3 font-display leading-relaxed"
+            className="relative rounded-xl sm:rounded-2xl px-4 py-3 sm:px-5 sm:py-4 font-display leading-relaxed"
             style={{
-              fontSize: 'clamp(11px, 3vw, 14px)',
+              fontSize: 'clamp(13px, 3.5vw, 15px)',
               background: 'rgba(26,10,46,0.92)',
               border: '1.5px solid rgba(244,162,97,0.5)',
               color: '#FFF1E6',
@@ -432,9 +434,9 @@ function VNMemoryOverlay({ memory, allMemories, onClose, onNextMemory, boyCharSr
 
         {/* Boy (absolute bottom left) */}
         <div
-          className="absolute left-2 sm:left-12 pointer-events-none"
+          className="absolute left-1 sm:left-12 pointer-events-none"
           style={{
-            bottom: '-15px',
+            bottom: '0px',
             zIndex: 10,
             filter: boyFlash ? 'brightness(2)' : 'brightness(1)',
             transition: 'filter 0.1s ease, opacity 0.2s ease, transform 0.2s ease',
@@ -448,9 +450,9 @@ function VNMemoryOverlay({ memory, allMemories, onClose, onNextMemory, boyCharSr
 
         {/* Girl (absolute bottom right) */}
         <div
-          className="absolute right-2 sm:right-12 pointer-events-none"
+          className="absolute right-1 sm:right-12 pointer-events-none"
           style={{
-            bottom: '-15px',
+            bottom: '0px',
             zIndex: 10,
             filter: girlFlash ? 'brightness(2)' : 'brightness(1)',
             transition: 'filter 0.1s ease, opacity 0.2s ease, transform 0.2s ease',

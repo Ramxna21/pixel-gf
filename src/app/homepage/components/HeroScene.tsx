@@ -547,8 +547,8 @@ Memogift
                 className="absolute"
                 style={{
                   bottom: -10,
-                  left: currentStep.speaker === 'girl' ? 24 : 'auto',
-                  right: currentStep.speaker === 'boy' ? 24 : 'auto',
+                  left: currentStep.speaker === 'boy' ? 24 : 'auto',
+                  right: currentStep.speaker === 'girl' ? 24 : 'auto',
                   width: 0, height: 0,
                   borderLeft: '8px solid transparent',
                   borderRight: '8px solid transparent',
@@ -662,27 +662,12 @@ function VNCharacters({ boySprite, girlSprite, dialogueIndex }: VNCharactersProp
       className="fixed bottom-0 left-0 right-0 pointer-events-none"
       style={{ zIndex: 15, height: 'clamp(240px, 42vw, 440px)' }}
     >
-      {/* Girl character (left) */}
+      {/* Boy character (left) */}
       <div
         className="absolute"
         style={{
           bottom: -16,
           left: 'clamp(8px, 8%, 28%)',
-          transform: 'translateX(0)',
-          animation: dialogueIndex === -1 ? 'idleBob 3.5s ease-in-out infinite' : 'idleBob 3.5s ease-in-out infinite',
-          filter: girlFlash ? 'brightness(2)' : 'brightness(1)',
-          transition: 'filter 0.1s ease',
-        }}
-      >
-        <PixelGirlCharacter sprite={girlSprite} src={girlExpressionSrc} />
-      </div>
-
-      {/* Boy character (right) — uses uploaded image per expression */}
-      <div
-        className="absolute"
-        style={{
-          bottom: -16,
-          right: 'clamp(8px, 8%, 28%)',
           transform: 'translateX(0)',
           animation: 'idleBobSlow 4s ease-in-out infinite',
           animationDelay: '0.5s',
@@ -691,6 +676,21 @@ function VNCharacters({ boySprite, girlSprite, dialogueIndex }: VNCharactersProp
         }}
       >
         <PixelBoyCharacter sprite={boySprite} src={boyExpressionSrc} />
+      </div>
+
+      {/* Girl character (right) */}
+      <div
+        className="absolute"
+        style={{
+          bottom: -16,
+          right: 'clamp(8px, 8%, 28%)',
+          transform: 'translateX(0)',
+          animation: dialogueIndex === -1 ? 'idleBob 3.5s ease-in-out infinite' : 'idleBob 3.5s ease-in-out infinite',
+          filter: girlFlash ? 'brightness(2)' : 'brightness(1)',
+          transition: 'filter 0.1s ease',
+        }}
+      >
+        <PixelGirlCharacter sprite={girlSprite} src={girlExpressionSrc} />
       </div>
     </div>
   );
