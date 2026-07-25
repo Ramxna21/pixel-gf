@@ -82,12 +82,6 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        {/* Demo credentials */}
-        <div className="mt-4 bg-gray-900/50 border border-gray-800 rounded-xl p-4">
-          <p className="text-xs text-gray-500 font-medium mb-2">Demo credentials</p>
-          <p className="text-xs text-gray-400">Email: <span className="text-gray-300">admin@memogift.com</span></p>
-          <p className="text-xs text-gray-400">Password: <span className="text-gray-300">admin123</span></p>
-        </div>
       </div>
     </div>
   );
